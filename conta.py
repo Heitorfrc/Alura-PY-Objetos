@@ -1,7 +1,8 @@
 
+
 class Conta :
 
-    def __init__(self, numero, titular, saldo, limite) -> None:
+    def __init__(self, numero, titular, saldo, limite) -> None :
         print("Construindo Objeto ...{}".format(self))
         self.__numero = numero
         self.__titular = titular
@@ -21,18 +22,24 @@ class Conta :
         self.saca(valor)
         destino.deposita(valor)       
 
-    def get_saldo(self) :
+    @property
+    def saldo(self) :
         return self.__saldo
     
-    def get_titular(self) :
+    @property
+    def titular(self) :
         return self.__titular
     
-    def get_limite(self) :
+    @property
+    def limite(self) :
         return self.__limite
     
-    def set_limite(self, novo_limite) :
-        self.__limite = novo_limite
+    @limite.setter
+    def limite(self, limite) :
+        self.__limite = limite
 
+
+    
 
 
 conta = Conta(123, "Heitor", 55.0, 1000.0)
@@ -45,14 +52,12 @@ conta.extrato()
 
 conta2.extrato()
 
-conta.get_saldo()
+print(conta.saldo)
 
-conta.get_limite()
+print(conta.titular)
 
-conta.get_titular()
-
-conta.set_limite(2000.0)
+conta.limite = 2000.0
 
 print(conta._Conta__titular)
 
-print(conta._Conta__limite)
+print(conta.limite)
