@@ -15,8 +15,15 @@ class Conta :
     def deposita(self, valor) :
         self.__saldo += valor
 
+    def __pode_sacar(self, valor_a_sacar) :
+        valor_disponivel_a_sacar = self.__saldo + self.__limite
+        return valor_a_sacar <= valor_disponivel_a_sacar
+
     def saca(self, valor) :
-        self.__saldo -= valor
+        if(self.__pode_sacar(valor)) :
+                self.__saldo -= valor
+        else :
+            print("O valor {} passou o limite".format(valor))
 
     def transfere(self, valor, destino) :
         self.saca(valor)
@@ -40,17 +47,15 @@ class Conta :
 
 
     
-
-
 conta = Conta(123, "Heitor", 55.0, 1000.0)
 
 conta2 = Conta(321, "Marco", 100.0, 1000.0)
 
-conta.transfere(15.0, conta2)
-
 conta.extrato()
 
 conta2.extrato()
+
+conta.transfere(15.0, conta2)
 
 print(conta.saldo)
 
@@ -61,3 +66,9 @@ conta.limite = 2000.0
 print(conta._Conta__titular)
 
 print(conta.limite)
+
+conta.saca(2100.0)
+
+conta.extrato()
+
+print(conta2._Conta__pode_sacar(10000.0))
