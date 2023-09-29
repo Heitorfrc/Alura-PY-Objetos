@@ -55,13 +55,13 @@ class Conta :
     
     
 conta = Conta(123, "Heitor", 55.0, 1000.0)
+
 conta2 = Conta(321, "Marco", 100.0, 1000.0)
 
 print(Conta.codigo_banco())
 print(Conta.codigos_bancos())
 
 conta.extrato()
-
 conta2.extrato()
 
 conta.limite = 2000.0
@@ -70,3 +70,5 @@ print(conta.limite)
 conta.saca(2100.0)
 
 conta.extrato()
+
+print(conta2._Conta__pode_sacar(1000))
