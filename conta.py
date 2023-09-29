@@ -45,30 +45,28 @@ class Conta :
     def limite(self, limite) :
         self.__limite = limite
 
+    @staticmethod
+    def codigo_banco() :
+        return "001"
 
+    @staticmethod
+    def codigos_bancos() :
+        return {"BB":"001", "Caixa":"104", "Bradesco":"237"}
+    
     
 conta = Conta(123, "Heitor", 55.0, 1000.0)
-
 conta2 = Conta(321, "Marco", 100.0, 1000.0)
+
+print(Conta.codigo_banco())
+print(Conta.codigos_bancos())
 
 conta.extrato()
 
 conta2.extrato()
 
-conta.transfere(15.0, conta2)
-
-print(conta.saldo)
-
-print(conta.titular)
-
 conta.limite = 2000.0
-
-print(conta._Conta__titular)
-
 print(conta.limite)
 
 conta.saca(2100.0)
 
 conta.extrato()
-
-print(conta2._Conta__pode_sacar(10000.0))
