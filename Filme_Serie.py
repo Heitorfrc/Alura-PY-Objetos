@@ -41,14 +41,39 @@ class Serie(Programa) :
         return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} Likes'
         
 
-vingadores = Filme("vingadores - guerra infinita", 2018, 160)
-vingadores.dar_like()
+class Playlist :
+    def __init__(self, nome, programas) -> None:
+        self.nome = nome
+        self._programas = programas
+    
+    @property
+    def listagem(self) :
+        return self._programas  
+    
+    @property
+    def tamanho(self) :
+        return len(self._programas)
+     
 
+vingadores = Filme("vingadores - guerra infinita", 2018, 160)
 atlanta = Serie("atlanta", 2018, 2)
+tmep = Filme("Todo mundo em panico", 199, 100)
+demolidor = Serie("demolidor", 2016, 2)
+
+
+vingadores.dar_like()
+tmep.dar_like()
+demolidor.dar_like()
+demolidor.dar_like()
 atlanta.dar_like()
 atlanta.nome = "atlanta - a terra esquecida"
 
-filmes_e_series = [vingadores, atlanta]
+filmes_e_series = [vingadores, atlanta, demolidor, tmep]
 
-for programa in filmes_e_series :
+playlist_fim_de_semana = Playlist("fim de semana", filmes_e_series)
+
+print(f"Tamanho da Playlist: {len(playlist_fim_de_semana.listagem)}")
+
+for programa in playlist_fim_de_semana.listagem :
     print(programa)
+
